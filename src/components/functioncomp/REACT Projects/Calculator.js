@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import "./React.css";
-// import { create, all } from 'mathjs';
+import { create, all } from 'mathjs';
 
 const Calculator = () => {
 
-  // const math = create(all);
+  const math = create(all);
 
   const [value, setValue] = useState("");
 
-  // const calculatingResult=()=>{
-  //     let result=math.evaluate(value);
-  //     setValue(result.toString());
-  // }
+  const calculatingResult = () => {
+    let result = math.evaluate(value);
+    setValue(result.toString());
+  }
 
   const onOperator = (e) => {
     const operators = ['+', '-', '*', '/', '%'];
@@ -63,7 +63,7 @@ const Calculator = () => {
           <div className='div5'>
             <input type='button' value='0' name='button' onClick={(e) => { setValue(value + e.target.value) }} />
             <input type='button' value='.' name='button' onClick={onDot} />
-            <input type='button' value='=' name='button' className='equal' onClick={() => { setValue(eval(value)) }/* calculatingResult */} />
+            <input type='button' value='=' name='button' className='equal' onClick={() => { calculatingResult() }} />
           </div>
         </form>
       </div>
